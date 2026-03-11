@@ -12,3 +12,6 @@ But I will be making releases soon, at the moment its just building up
 
 # READ LICENSE
 Please read the LICENSE.txt if you want to use the source code
+
+# Permission
+You are free to use this scene or any example scene in the [Examples](Examples) as a foundation for your own projects.
