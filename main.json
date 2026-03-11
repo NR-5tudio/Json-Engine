@@ -1,0 +1,21 @@
+{
+    "main": {"height": 600, "width": 1200, "title": "MyGame"},
+
+    "begin": [
+        {"load": {"name": "Player", "source": "player.json"}}
+    ],
+
+    "update": [
+        {"assaoethaoet": "something random like this wont effect because its just a comment!"},
+        {"baam!": "another comment!"},
+        {"print": "This will not work: {Health}"},
+        {"print": "This will work: {Player.Health}"},
+        {"call": "custom_function_main", "": "this will work"},
+        {"call": "custom_function", "this is 'custom function wont work because its only in the player'": ""}
+        
+    ],
+
+    "custom_function_main": [
+        {"call": "Player.custom_function", "now it will work!": ""}
+    ]
+}
