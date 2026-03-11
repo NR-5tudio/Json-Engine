@@ -1,6 +1,14 @@
 # Json-Coding
 I’m finally working on something big! Now JSON files can be fully functional—you can execute them to create complete programs.
 
+Examples: [Examples](Examples)
+```json
+{
+    "begin": [
+        {"print": "Json Coding by NR!"}
+    ]
+}
+```
 # How to Install
 There is no official release yet (as of 3/11/2026), but releases will be available soon. Right now, it’s still in active development.
 
