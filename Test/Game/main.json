@@ -1,21 +1,78 @@
 {
-    "main": {"height": 600, "width": 1200, "title": "MyGame"},
+    "PrintStats": [
+        {"print": "--- Your Stats ---"},
+        {"print": "Name:   {Name}"},
+        {"print": "Health: {Health}"},
+        {"print": "Gold:   {Gold}"},
+        {"print": "-----------------"}
+    ],
+
+    "Heal": [
+        {"param": ["Amount:int"]},
+        {"var": "Health = Health + {Amount}"},
+        {"print": "You healed {Amount} HP. Health is now {Health}."}
+    ],
 
     "begin": [
-        {"load": {"name": "Player", "source": "player.json"}}
+        {"var": "Health = 100"},
+        {"var": "Gold = 10"},
+        {"var": "Name = 'Stranger'"},
+
+        {"print": "Welcome to the adventure!"},
+        {"input": ["Name", "What is your name?: "]},
+        {"print": "Hello, {Name}!"},
+
+        {"load": {"name": "Companion", "source": "companion.json"}},
+        {"Companion.begin": null},
+
+        "PrintStats"
     ],
 
     "update": [
-        {"assaoethaoet": "something random like this wont effect because its just a comment!"},
-        {"baam!": "another comment!"},
-        {"print": "This will not work: {Health}"},
-        {"print": "This will work: {Player.Health}"},
-        {"call": "custom_function_main", "": "this will work"},
-        {"call": "custom_function", "this is 'custom function wont work because its only in the player'": ""}
-        
-    ],
+        {"print": ""},
+        {"print": "What do you do?"},
+        {"print": "  1) Search for gold"},
+        {"print": "  2) Rest (heal 20 HP)"},
+        {"print": "  3) Fight a goblin"},
+        {"print": "  4) Check stats"},
+        {"print": "  5) Quit"},
+        {"input": ["Choice", "> "]},
 
-    "custom_function_main": [
-        {"call": "Player.custom_function", "now it will work!": ""}
+        {"if": ["'{Choice}' == '1'", {
+            "true": [
+                {"var": "Gold = Gold + 5"},
+                {"print": "You found 5 gold! Total: {Gold}"}
+            ]
+        }]},
+
+        {"if": ["'{Choice}' == '2'", {
+            "true": {"Heal": "20"}
+        }]},
+
+        {"if": ["'{Choice}' == '3'", {
+            "true": [
+                {"var": "Health = Health - 30"},
+                {"print": "You fought a goblin and took 30 damage!"},
+                {"Companion.Attack": "the goblin"},
+                {"if": ["Health <= 0", {
+                    "true": [
+                        {"print": "You died. Game over, {Name}."},
+                        {"return": "__exit__"}
+                    ],
+                    "false": {"print": "You survived! Health: {Health}"}
+                }]}
+            ]
+        }]},
+
+        {"if": ["'{Choice}' == '4'", {
+            "true": "PrintStats"
+        }]},
+
+        {"if": ["'{Choice}' == '5'", {
+            "true": [
+                {"print": "Goodbye, {Name}!"},
+                {"return": "__exit__"}
+            ]
+        }]}
     ]
 }

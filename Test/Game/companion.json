@@ -1,0 +1,12 @@
+{
+    "begin": [
+        {"var": "CompanionName = 'Aria'"},
+        {"var": "CompanionHP = 80"},
+        {"print": "{CompanionName} joins your party! (HP: {CompanionHP})"}
+    ],
+
+    "Attack": [
+        {"param": ["Target:str"]},
+        {"print": "{CompanionName} attacks {Target} for 15 damage!"}
+    ]
+}
