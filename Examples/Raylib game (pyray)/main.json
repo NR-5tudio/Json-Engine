@@ -1,0 +1,20 @@
+{
+    "begin": [
+        {"include": ["Raylib", "Keyboard"]},
+        {"load": ["Player", "player.json"]},
+        {"show window": ["My game", 1200, 600]},
+        "Player.init"
+    ],
+    "update": [
+        {"if": ["$(window should close)", {"true": [{"stop message": ""}, {"exit": ""}]}]},
+        {"#": ["$(window should close)", {"true": [{"exit": ""}]}]},
+        {"begin drawing": ""},
+        {"clear background": ""},
+        "Player.tick",
+        {"end drawing": ""}
+
+    ],
+    "stop message": [
+        {"print": "Game stopped successfully"}
+    ]
+}

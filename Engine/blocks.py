@@ -1,6 +1,5 @@
 import rich as r
 import Engine.state as state
-
 # ─── Built-in Handlers ────────────────────────────────────────────────────────
 #
 # Each handler receives (action_value, all_functions, local_vars) and returns
@@ -14,6 +13,12 @@ import Engine.state as state
 # To remove a built-in block:
 #   1. Delete (or comment out) the handler function
 #   2. Remove its entry from BUILTIN_HANDLERS
+
+# GameFunctions:
+import Engine.game_blocks as game
+import Engine.keyboard_blocks as keyboard
+Raylib = game.Game
+Keyboard = keyboard.Keyboard
 
 
 def handle_var(value, all_functions, local_vars):
@@ -78,7 +83,7 @@ def handle_if(value, all_functions, local_vars):
 
 
 def handle_load(value, all_functions, local_vars):
-    """Load an external object file: {"load": ["Player", player.json"]}"""
+    """Load an external object file: {"load": ["Player", "player.json"]}"""
     from Engine.engine import get_functions
     from Engine.nrjson import nrjson
     name     = value[0]
@@ -91,6 +96,34 @@ def handle_load(value, all_functions, local_vars):
 def handle_exit(value, all_functions, local_vars):
     """Stop the program: {"exit": null}"""
     return "__exit__"
+
+
+def handle_comment(value, all_functions, local_vars):
+    """No-op comment block: {"#": "your comment here"}"""
+    pass
+
+
+def IncludePackage(value, all_functions, local_vars):
+    inlist = []
+    if isinstance(value, list):
+        inlist.extend(value)
+    else:
+        inlist.append(value)
+
+    for including in inlist:
+        # Guard: skip empty/None values
+        if not including:
+            print("Are you trying to include nothing?")
+            continue
+
+        if including in globals():
+            print(f"Including - {including}")
+            try:
+                BUILTIN_HANDLERS.update(globals()[including])
+            except Exception as e:
+                r.print(f"[red]Error during importing the package '{including}': {e}[/red]")
+        else:
+            r.print(f"[red]The package '{including}' does not exist.[/red]")
 
 
 # ─── Block Registry ───────────────────────────────────────────────────────────
@@ -106,4 +139,6 @@ BUILTIN_HANDLERS = {
     "if":            handle_if,
     "load":          handle_load,
     "exit":          handle_exit,
+    "#":             handle_comment,
+    "include":       IncludePackage,
 }

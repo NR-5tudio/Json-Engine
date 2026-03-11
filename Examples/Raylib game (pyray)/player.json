@@ -1,0 +1,17 @@
+{  
+    "init": [
+        {"var": "Y = 0"},
+        {"var": "X = 0"},
+        {"var": "speed = 600"},
+        {"print": "Player spawned"}
+    ],
+    
+    "tick": [
+        {"if": ["$(is key down ['w'])", {"true": [{"var": "Y -= {speed} * $(get delta time)"}]}]},    {"#": "If 'w' is pressed move the player Y up"},
+        {"if": ["$(is key down ['s'])", {"true": [{"var": "Y += {speed} * $(get delta time)"}]}]},    {"#": "If 's' is pressed move the player Y down"},
+        {"if": ["$(is key down ['d'])", {"true": [{"var": "X += {speed} * $(get delta time)"}]}]},    {"#": "If 'd' is pressed move the player X right"},
+        {"if": ["$(is key down ['a'])", {"true": [{"var": "X -= {speed} * $(get delta time)"}]}]},    {"#": "If 'a' is pressed move the player X left"},
+        
+        {"draw rectangle": ["{X}", "{Y}", 50, 50, [255, 255, 255, 255]]}
+    ]
+}
