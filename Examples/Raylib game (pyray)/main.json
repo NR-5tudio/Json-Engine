@@ -6,8 +6,31 @@
         "Player.init"
     ],
     "update": [
-        {"if": ["$(window should close)", {"true": [{"stop message": ""}, {"exit": ""}]}]},
-        {"#": ["$(window should close)", {"true": [{"exit": ""}]}]},
+        {
+            "if": 
+            [
+                "$(window should close)",
+                {"true": 
+                    [
+                        {"stop message": ""}, 
+                        {"exit": ""}
+                    ]
+                }
+            ]
+        },
+
+        {
+            "#": 
+            [
+                "$(window should close)", 
+                {
+                    "true": 
+                    [
+                        {"exit": ""}
+                    ]
+                }
+            ]
+        },
         {"begin drawing": ""},
         {"clear background": ""},
         "Player.tick",

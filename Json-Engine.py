@@ -3,6 +3,8 @@ import rich as r
 from Engine.engine import get_functions, run_actions
 from Engine.nrjson import nrjson
 from datetime import datetime
+import os
+
 
 if len(sys.argv) < 2:
     r.print("[red]Missing arg: <file.json>[/red]")

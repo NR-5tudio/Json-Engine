@@ -4,7 +4,9 @@ Iâ€™m finally working on something big! Now JSON files can be fully functionalâ€
 Examples: [Examples](Examples)
 ```json
 {
-    "begin": [
+    "begin": 
+    [
+        {"#": "Now json can run code!"}
         {"print": "Json Coding by NR!"}
     ]
 }

@@ -1,4 +1,19 @@
+import sys
+import os
+import builtins
+import sys
+
+original_print = print
+def silent_print(*args, **kwargs):
+    if args and "RAYLIB STATIC" in str(args[0]):
+        return
+    original_print(*args, **kwargs)
+
+builtins.print = silent_print
 import pyray as pr
+builtins.print = original_print
+
+# Now pyray is imported without the message
 from simpleeval import simple_eval
 
 def show_window(value, all_functions, local_vars):

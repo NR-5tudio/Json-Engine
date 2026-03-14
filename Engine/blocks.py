@@ -1,20 +1,5 @@
 import rich as r
 import Engine.state as state
-# ─── Built-in Handlers ────────────────────────────────────────────────────────
-#
-# Each handler receives (action_value, all_functions, local_vars) and returns
-# either None (keep running) or a value (propagate as return / signal).
-#
-# To add a new built-in block:
-#   1. Write a function  handle_<name>(value, all_functions, local_vars)
-#   2. Register it in BUILTIN_HANDLERS at the bottom: "name": handle_<name>
-#   That's it — no other file changes needed.
-#
-# To remove a built-in block:
-#   1. Delete (or comment out) the handler function
-#   2. Remove its entry from BUILTIN_HANDLERS
-
-# GameFunctions:
 import Engine.game_blocks as game
 import Engine.keyboard_blocks as keyboard
 Raylib = game.Game
@@ -125,14 +110,14 @@ def IncludePackage(value, all_functions, local_vars):
         else:
             r.print(f"[red]The package '{including}' does not exist.[/red]")
 
+def write_file(value, all_functions, local_vars):
+    print("Start")
 
-# ─── Block Registry ───────────────────────────────────────────────────────────
-# Maps built-in keyword → handler function.
-# Add or remove entries here to enable/disable blocks.
 
 BUILTIN_HANDLERS = {
     "var":           handle_var,
     "print":         handle_print,
+    "output":        handle_print,
     "colored print": handle_colored_print,
     "input":         handle_input,
     "return":        handle_return,
@@ -141,4 +126,5 @@ BUILTIN_HANDLERS = {
     "exit":          handle_exit,
     "#":             handle_comment,
     "include":       IncludePackage,
+    "write in file": write_file
 }
