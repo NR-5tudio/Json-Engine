@@ -27,5 +27,7 @@ As the creator of this engine, I cannot control how others use these files, so t
 # Permission
 You’re free to use any example in the [Examples](Examples) folder as a foundation for your own projects.
 
+# Versions description in UPDATES.md
+[Versions description](UPDATES.md)
 # Read the License
 Please check LICENSE.txt if you want to use the source code.
