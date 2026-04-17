@@ -1,12 +1,5 @@
-© 2026 NR. All Rights Reserved.
+LICENSE UPDATED:
+Since I rarly update this plugin, I will leave it for you guys,
+Feel free to copy/edit/sell/include json engine in your projects!.
 
-You are allowed to:
-- Use the software for personal or commercial purposes.
-- Share and distribute the compiled releases (binaries).
-- Make tutorials, videos, or other content based on the software.
-
-You are NOT allowed to:
-- Copy, modify, or redistribute the source code.
-- Create derivative works of the source code.
-
-Note: This license may be updated or changed over time.
+if you want: credit me using a button `@NR_5tudio` on youtube, this is 100% optional but will help me a lot, thank yall!
